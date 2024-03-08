@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .HPbar{
+        border: solid black 5px;
+        height: 20px;
+        width: 724px;
+        background-color: white;
+        color: red;
+        font-size: 40px;
+        line-height: 20px;
+        margin: 10px;
+        line-height: 12px;
+    }
+    .HPtext{
+        font-size: 40px;
+    }
+    button{
+        font-size: 20px;
+    }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+
+        let HP = 0
+        let HPbar = [];
+        let app = document.getElementById('app');
+        updateView()
+        function updateView(){
+       app.innerHTML = /*html*/`
+          <div class = "HPtext">HP:${HP}/30<div class = "HPbar">${HPbar.join('')}</div></div>
+          <button onclick = "addHP()">AddHP</button>
+          <button onclick = "RemoveHP()">RemoveHP</button>
+          
+          `
+        }
+        function addHP(){
+            if(HP < 30){
+            HP++;
+            HPbar.push('■');
+            updateView()}}
+
+            function RemoveHP(){
+            if(HP > 0){
+            HP--;
+            HPbar.splice('■',1)
+            updateView()}}
+    </script>
+</body>
+</html>
